@@ -20,7 +20,7 @@ class TestTextNode(unittest.TestCase):
         self.assertNotEqual(node, node2)
 
     def test_noteq_texttype(self):
-        node = TextNode("TextTypeTest", TextType.NORMAL, "www.test.de")
+        node = TextNode("TextTypeTest", TextType.TEXT, "www.test.de")
         node2 = TextNode("TextTypeTest", TextType.LINK, "www.test.de")
         self.assertNotEqual(node, node2)
 
