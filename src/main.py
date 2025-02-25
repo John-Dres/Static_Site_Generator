@@ -43,6 +43,11 @@ def main():
     print(f"Node 2: {split_nodes_image([node2])}")
     print(f"Node 3: {split_nodes_image([node3])}")
     print(f"Node 4: {split_nodes_image([node4])}")
-
+    text = "This is **text** with an *italic* word and a `code block` and an ![obi wan image](https://i.imgur.com/fJRm4Vk.jpeg) and a [link](https://boot.dev)"
+    ConvertTest = TextNode(text, TextType.TEXT)
+    print(f"Convert Test: {split_nodes_delimiter([ConvertTest], "**", TextType.BOLD)}")
+    BoldTextNodeObjects = split_nodes_delimiter([ConvertTest], "**", TextType.BOLD)
+    print(f"Convert Test2: {split_nodes_delimiter(BoldTextNodeObjects, "*", TextType.ITALIC)}")
+    print(f"Function Test: {text_to_textnodes(text)}")
 main()
 
