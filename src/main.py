@@ -1,9 +1,10 @@
 from textnode import *
 from htmlnode import *
 from myfunctions import *
+from block_markdown import *
 
 def main():
-    #print("Hello World")
+    """print("Hello World")
     NewTextNode = TextNode("This is a text node",TextType.BOLD,"https://www.boot.dev")
     NewHTMLNode = HTMLNode("<t>", 3, "Child", {"key":"value"})
     NewLeafNode = LeafNode("a", "Click me!", {"href": "https://www.google.com"})
@@ -49,5 +50,57 @@ def main():
     BoldTextNodeObjects = split_nodes_delimiter([ConvertTest], "**", TextType.BOLD)
     print(f"Convert Test2: {split_nodes_delimiter(BoldTextNodeObjects, "*", TextType.ITALIC)}")
     print(f"Function Test: {text_to_textnodes(text)}")
+    markdown_test = "  # First Block  \n\nSecond Block\n\n\n\n\nThird Block\nAlso Third Block"
+    print(f"Markdown Test: {markdown_test}")
+    print(f"Markdown_To_Blocks_Test: {markdown_to_blocks(markdown_test)}")
+    print(f"Splitlines Test: {markdown_test.splitlines()}")
+    test_string = '##### heading 2'
+    partition = test_string.partition(' ')
+    print(f"Remove Prefix Test: {partition[2]}")
+    quote_test = '> First line\n> Second Line\n> Third line'
+    quote_lines = quote_test.splitlines()
+    final_quote = ''
+    for quote_line in quote_lines:
+        partition = quote_line.partition(' ')
+        final_quote += f" {partition[2]}
+    for quote_line in quote_lines:
+        final_quote += f" {quote_line.removeprefix('> ')}"
+    print(f"Quote Test: {final_quote.strip()}")
+    #print(f"Quote Test: {final_quote}")
+    QuoteNode = quote_to_htmlnode(quote_test)
+    print(f"Quote Node: {QuoteNode}")
+    code = '```\nThis is code\n\nThis still is\n```'
+    print(f"Code:\n{code.strip("`\n")}")
+    code = "```\nThis is text that _should_ remain the **same** even with inline stuff\n```"
+    full_code = code.strip("`\n`")
+    CodeTextNode = TextNode(full_code, TextType.CODE)
+    CodeLeafNode = CodeTextNode.text_node_to_html_node()
+    PreNode = ParentNode("pre", CodeLeafNode)
+    print(f"Test: {PreNode}")"""
+    #text = "**bold Heading** normal text"
+    #heading = "# Heading 1 with **bold text**\n## Heading 2 with *italic text*\n### Heading 3 with ```code text```"
+    #textnodes = text_to_textnodes(text)
+    #htmlnodes = []
+    #for textnode in textnodes:
+        #html = textnode.text_node_to_html_node()
+        #htmlnodes.append(html)
+    #print(f"Heading Nodes: {heading_to_htmlnode(heading)}")
+    #print(f"Textnodes: {textnodes}")
+    #print(f"HTMLnodes: {htmlnodes}")
+    #print(f"Function Test: {text_to_children(text)}")
+    #print(f"Blocktype: {block_to_block_type(heading)}")
+    #print(f"Markdown: {markdown_to_html_node(heading)}")
+    paragraph = "This is a paragraph with **bold text** and *italic text*"
+    ParaNode = paragraph_to_htmlnode(paragraph)
+    #print(f"Paragraph Test: {paragraph_to_htmlnode(paragraph)}")
+    #print(f"Paragraph function Test: {markdown_to_html_node(paragraph)}")
+    #quote = "> This is a quote\n> This still is\n> But now with **bold text** and *italic text*"
+    #print(f"Quote Test: {markdown_to_html_node(quote)}")
+    #code = "```\nThis is code and this is code\nAnd this is **bold code** that should stay the same\n```"
+    #print(f"Code Test: {code_to_htmlnode(code)}")
+    OL = "1. This and **Bold Item 1**\n2. Item 2\n3. Item 3"
+    OLNode = ordered_list_to_htmlnode(OL)
+    print(f"OL Test: {ordered_list_to_htmlnode(OL)}")
+    print(f"To Html: {OLNode.to_html()}")
 main()
 
